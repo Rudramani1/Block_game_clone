@@ -36,15 +36,12 @@ A classic Tetris-style block game implementation using C++ and the Raylib librar
 2. Ensure you have the C/C++ extension installed.
 3. Open `src/main.cpp`.
 4. Press `F5` to compile and run the game.
-
-<<<<<<< HEAD
 =======
 ### Manual Build
 If you have `make` installed and configured with Raylib:
 ```bash
 make
 ```
->>>>>>> 5134f24 (Updated Preview.jpg)
 
 ## XY File Structure
 
