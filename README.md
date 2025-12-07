@@ -1,30 +1,51 @@
-# Raylib-CPP-Starter-Template-for-VSCODE-V2
-Raylib C++ Starter Template for Visual Studio Code on Windows.
-This demo project contains a bouncing ball raylib example program.
-It works with raylib version 5.0. Tested on both Windows 10 and Windows 11.
+# Raylib Tetris Clone
 
-# How to use this template
-1. Double click on the main.code-workspace file. This will open the template in VS Code.
-2. From the Explorer Window of VS Code navigate to the src folder and double click on the main.cpp file.
-3. Press F5 on the keyboard to compile and run the program.
-
-# What's changed
-The template now uses folders for better organizion of the files. So, all the source code now lives in the src folder.
-
-# Video Tutorial
+A classic Tetris-style block game implementation using C++ and the Raylib library.
 
 <p align="center">
-  <img src="preview.jpg" alt="" width="800">
+  <img src="preview.jpg" alt="Game Preview" width="600">
 </p>
 
-<p align="center">
-🎥 <a href="https://www.youtube.com/watch?v=PaAcVk5jUd8">Video Tutorial on YouTube</a>
-</p>
+## 🎮 Features
 
-<br>
-<br>
-<p align="center">
-| 📺 <a href="https://www.youtube.com/channel/UC3ivOTE5EgpmF2DHLBmWIWg">My YouTube Channel</a>
-| 🌍 <a href="http://www.programmingwithnick.com">My Website</a> | <br>
-</p>
-# Block_game_clone
+- **Classic Gameplay**: Complete rows to clear them and score points.
+- **7 Tetromino Types**: I, J, L, O, S, T, Z blocks.
+- **Score System**: Points for clearing lines and soft dropping.
+- **Next Block Preview**: See which piece is coming next.
+- **Sound Effects & Music**: Background music and sound effects for rotation and line clearing.
+- **Game Over State**: Detects when blocks stack too high.
+
+## 🕹️ Controls
+
+| Key | Action |
+| --- | --- |
+| **Left Arrow** | Move Block Left |
+| **Right Arrow** | Move Block Right |
+| **Down Arrow** | Move Block Down (Soft Drop) |
+| **Up Arrow** | Rotate Block |
+
+## 🛠️ How to Build & Run
+
+### Prerequisites
+- C++ Compiler (MinGW for Windows)
+- [Raylib](https://www.raylib.com/) library
+- Visual Studio Code (Recommended)
+
+### Using VS Code (Windows)
+1. Open the `main.code-workspace` file in Visual Studio Code.
+2. Ensure you have the C/C++ extension installed.
+3. Open `src/main.cpp`.
+4. Press `F5` to compile and run the game.
+
+
+## XY File Structure
+
+- `src/`: Source code files (.cpp and .h)
+- `Sounds/`: Game audio assets
+- `Font/`: Game fonts
+- `lib/`: Precompiled libraries
+
+## � Credits
+
+- Built with [Raylib](https://www.raylib.com/)
+- Font: Monogram
