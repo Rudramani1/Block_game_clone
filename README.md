@@ -3,7 +3,7 @@
 A classic Tetris-style block game implementation using C++ and the Raylib library.
 
 <p align="center">
-  <img src="preview.jpg" alt="Game Preview" width="600">
+  <img src="Sample.png" alt="Game Preview" width="600">
 </p>
 
 ## 🎮 Features
