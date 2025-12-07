@@ -56,10 +56,11 @@
 
         .game-embed {
             width: 100%;
-            height: 620px;
+            height: 700px;
             border: none;
             border-radius: 10px;
             display: block;
+            background: #000;
         }
 
         .game-instructions {
@@ -119,7 +120,57 @@
 
         <div class="game-frame">
             <iframe src="Tetris.html" class="game-embed" allowfullscreen sandbox="allow-scripts allow-same-origin"></iframe>
+            <style>
+                /* Hide unwanted elements in iframe */
+                iframe {
+                    pointer-events: auto;
+                }
+            </style>
         </div>
+        
+        <script>
+            // Hide unwanted elements in the iframe after it loads
+            window.addEventListener('load', function() {
+                try {
+                    const iframe = document.querySelector('.game-embed');
+                    iframe.addEventListener('load', function() {
+                        try {
+                            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                            
+                            // Hide the logo
+                            const logo = iframeDoc.getElementById('emscripten_logo');
+                            if (logo) logo.style.display = 'none';
+                            
+                            // Hide the output textarea
+                            const output = iframeDoc.getElementById('output');
+                            if (output) output.style.display = 'none';
+                            
+                            // Hide the status text
+                            const status = iframeDoc.getElementById('status');
+                            if (status) status.style.display = 'none';
+                            
+                            // Hide the spinner
+                            const spinner = iframeDoc.getElementById('spinner');
+                            if (spinner) spinner.style.display = 'none';
+                            
+                            // Hide the progress bar
+                            const progress = iframeDoc.getElementById('progress');
+                            if (progress) progress.style.display = 'none';
+                            
+                            // Optionally center the canvas
+                            const border = iframeDoc.querySelector('.emscripten_border');
+                            if (border) {
+                                border.style.margin = '20px auto';
+                            }
+                        } catch (e) {
+                            console.log('Cannot access iframe content (same-origin policy)');
+                        }
+                    });
+                } catch (e) {
+                    console.log('Error accessing iframe');
+                }
+            });
+        </script>
 
         <div class="game-instructions">
             <h2>How to Play</h2>
