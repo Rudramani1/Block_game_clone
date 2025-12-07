@@ -14,165 +14,254 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .game-wrapper {
+            display: flex;
+            gap: 30px;
             padding: 20px;
+            max-width: 1400px;
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+        }
+
+        .instructions-panel {
+            flex: 0 0 300px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            height: fit-content;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .instructions-panel h1 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .instructions-panel .subtitle {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .instructions-panel h2 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+
+        .instructions-panel ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .instructions-panel li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1rem;
+            color: #333;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .instructions-panel li:last-child {
+            border-bottom: none;
+        }
+
+        .instructions-panel li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: #667eea;
         }
 
         .game-container {
+            flex: 1;
             background: white;
             border-radius: 20px;
-            padding: 40px;
+            padding: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            max-width: 600px;
-            width: 100%;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .game-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
 
         .game-header h1 {
             color: #667eea;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .game-header p {
-            color: #555;
-            font-size: 1.1rem;
+            font-size: 2rem;
+            margin-bottom: 5px;
         }
 
         .game-frame {
             background: #000;
             border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
         .game-embed {
             width: 100%;
-            height: 700px;
+            height: 100%;
             border: none;
             border-radius: 10px;
             display: block;
             background: #000;
         }
 
-        .game-instructions {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        /* Mobile Controls */
+        .mobile-controls {
+            display: none;
+            background: white;
             border-radius: 15px;
-            padding: 25px;
-            color: white;
-            margin-top: 20px;
+            padding: 15px;
+            margin-top: 15px;
         }
 
-        .game-instructions h2 {
-            font-size: 1.5rem;
+        .mobile-controls h3 {
+            color: #667eea;
+            font-size: 1.1rem;
             margin-bottom: 15px;
             text-align: center;
         }
 
-        .game-instructions ul {
-            list-style: none;
-            padding: 0;
+        .control-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 250px;
+            margin: 0 auto;
         }
 
-        .game-instructions li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-            font-size: 1.1rem;
+        .control-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: transform 0.1s, box-shadow 0.1s;
         }
 
-        .game-instructions li:before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
+        .control-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
+        .control-btn.rotate {
+            grid-column: 2;
+        }
+
+        .control-btn.left {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .control-btn.down {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .control-btn.right {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        /* Mobile Layout */
         @media (max-width: 768px) {
-            .game-container {
+            body {
+                overflow-y: auto;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .game-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .instructions-panel {
+                flex: 0 0 auto;
+                width: 100%;
+                max-height: none;
                 padding: 20px;
             }
 
-            .game-header h1 {
-                font-size: 2rem;
+            .instructions-panel h1 {
+                font-size: 1.5rem;
             }
 
-            .game-embed {
-                height: 500px;
+            .instructions-panel h2 {
+                font-size: 1.1rem;
+            }
+
+            .game-container {
+                width: 100%;
+                height: auto;
+                min-height: 500px;
+                padding: 15px;
+            }
+
+            .game-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .game-frame {
+                min-height: 450px;
+            }
+
+            .mobile-controls {
+                display: block;
+            }
+        }
+
+        /* Tablet Layout */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .game-wrapper {
+                gap: 20px;
+            }
+
+            .instructions-panel {
+                flex: 0 0 250px;
+                padding: 20px;
+            }
+
+            .instructions-panel h1 {
+                font-size: 1.7rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="game-container">
-        <div class="game-header">
+    <div class="game-wrapper">
+        <!-- Instructions Panel -->
+        <div class="instructions-panel">
             <h1>🎮 Tetris</h1>
-            <p>Classic block-stacking puzzle game</p>
-        </div>
-
-        <div class="game-frame">
-            <iframe src="Tetris.html" class="game-embed" allowfullscreen sandbox="allow-scripts allow-same-origin"></iframe>
-            <style>
-                /* Hide unwanted elements in iframe */
-                iframe {
-                    pointer-events: auto;
-                }
-            </style>
-        </div>
-        
-        <script>
-            // Hide unwanted elements in the iframe after it loads
-            window.addEventListener('load', function() {
-                try {
-                    const iframe = document.querySelector('.game-embed');
-                    iframe.addEventListener('load', function() {
-                        try {
-                            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                            
-                            // Hide the logo
-                            const logo = iframeDoc.getElementById('emscripten_logo');
-                            if (logo) logo.style.display = 'none';
-                            
-                            // Hide the output textarea
-                            const output = iframeDoc.getElementById('output');
-                            if (output) output.style.display = 'none';
-                            
-                            // Hide the status text
-                            const status = iframeDoc.getElementById('status');
-                            if (status) status.style.display = 'none';
-                            
-                            // Hide the spinner
-                            const spinner = iframeDoc.getElementById('spinner');
-                            if (spinner) spinner.style.display = 'none';
-                            
-                            // Hide the progress bar
-                            const progress = iframeDoc.getElementById('progress');
-                            if (progress) progress.style.display = 'none';
-                            
-                            // Optionally center the canvas
-                            const border = iframeDoc.querySelector('.emscripten_border');
-                            if (border) {
-                                border.style.margin = '20px auto';
-                            }
-                        } catch (e) {
-                            console.log('Cannot access iframe content (same-origin policy)');
-                        }
-                    });
-                } catch (e) {
-                    console.log('Error accessing iframe');
-                }
-            });
-        </script>
-
-        <div class="game-instructions">
+            <p class="subtitle">Classic block-stacking puzzle game</p>
+            
             <h2>How to Play</h2>
             <ul>
                 <li>⬅️ Left Arrow - Move block left</li>
@@ -181,7 +270,84 @@
                 <li>⬆️ Up Arrow - Rotate block</li>
                 <li>🎯 Clear lines to score points!</li>
             </ul>
+
+            <h2>Game Rules</h2>
+            <ul>
+                <li>🔲 Stack blocks to form complete lines</li>
+                <li>💥 Complete lines disappear and score points</li>
+                <li>⚡ Game speeds up as you progress</li>
+                <li>❌ Game ends when blocks reach the top</li>
+            </ul>
+        </div>
+
+        <!-- Game Container -->
+        <div class="game-container">
+            <div class="game-header">
+                <h1>Play Tetris</h1>
+            </div>
+
+            <div class="game-frame">
+                <iframe src="Tetris.html" class="game-embed" allowfullscreen sandbox="allow-scripts allow-same-origin"></iframe>
+            </div>
+
+            <!-- Mobile Touch Controls -->
+            <div class="mobile-controls">
+                <h3>Touch Controls</h3>
+                <div class="control-grid">
+                    <button class="control-btn rotate" id="rotateBtn">⬆️</button>
+                    <button class="control-btn left" id="leftBtn">⬅️</button>
+                    <button class="control-btn down" id="downBtn">⬇️</button>
+                    <button class="control-btn right" id="rightBtn">➡️</button>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Mobile control buttons
+        const iframe = document.querySelector('.game-embed');
+        
+        function sendKeyToGame(keyCode) {
+            try {
+                const iframeWindow = iframe.contentWindow;
+                const event = new KeyboardEvent('keydown', {
+                    keyCode: keyCode,
+                    which: keyCode,
+                    bubbles: true,
+                    cancelable: true
+                });
+                iframeWindow.document.dispatchEvent(event);
+            } catch (e) {
+                console.log('Cannot send key to iframe:', e);
+            }
+        }
+
+        // Button event listeners
+        document.getElementById('leftBtn')?.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            sendKeyToGame(37); // Left arrow
+        });
+
+        document.getElementById('rightBtn')?.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            sendKeyToGame(39); // Right arrow
+        });
+
+        document.getElementById('downBtn')?.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            sendKeyToGame(40); // Down arrow
+        });
+
+        document.getElementById('rotateBtn')?.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            sendKeyToGame(38); // Up arrow
+        });
+
+        // Also support click for testing on desktop
+        document.getElementById('leftBtn')?.addEventListener('click', () => sendKeyToGame(37));
+        document.getElementById('rightBtn')?.addEventListener('click', () => sendKeyToGame(39));
+        document.getElementById('downBtn')?.addEventListener('click', () => sendKeyToGame(40));
+        document.getElementById('rotateBtn')?.addEventListener('click', () => sendKeyToGame(38));
+    </script>
 </body>
 </html>
